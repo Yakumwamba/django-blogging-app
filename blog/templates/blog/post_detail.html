@@ -1,0 +1,15 @@
+<!-- templates/blog/post_detail.html -->
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+
+{% include 'blog/comment_form.html' %}
+
+<h2>Comments</h2>
+{% for comment in post.comments.all %}
+  <div>
+    <strong>{{ comment.author.username }}</strong>
+    <p>{{ comment.text }}</p>
+  </div>
+{% empty %}
+  <p>No comments yet...</p>
+{% endfor %}
